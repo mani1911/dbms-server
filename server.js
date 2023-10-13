@@ -1,20 +1,18 @@
 import fastify from "fastify";
-import dotenv from "dotenv"
+import dotenv from "dotenv";
 dotenv.config({
-	path: '.env',
+	path: ".env",
 });
 import connectMongoDatabase from "./utils/connectMongoDb.js";
 import connectSqlDatabase from "./utils/connectSqlDb.js";
 import cookie from "@fastify/cookie";
 import cors from "@fastify/cors";
-import config from './config/index.js';
-import {healthRouter} from './routes/index.js'
+import config from "./config/index.js";
+import { healthRouter } from "./routes/index.js";
 
 const app = fastify({
 	logger: config.logger,
 });
-
-
 
 connectMongoDatabase(config.db);
 connectSqlDatabase(config.db);
@@ -31,7 +29,6 @@ app.register(cors, {
 });
 
 healthRouter(app);
-
 
 app.listen({ port: config.port, host: config.host }, () => {
 	console.log(`Server running at http://localhost:${config.port}`);
