@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  mysql_db:
+    container_name: "dbms_mysql"
+    image: "mysql/mysql-server:latest"
+    ports:
+      - 3306:3306
+    env_file:
+      - .env
+    volumes:
+      - ./data/sqlData:/var/lib/mysql
+
+  mongo_db:
+    container_name: "dbms_mongo"
+    image: mongo:latest
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data/mongoData:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=dbms
+    restart: always
+
+  adminer:
+    container_name: "dbms_adminer"
+    image: "adminer"
+    ports:
+      - ${ADMINER_PORT}:8080
+    depends_on:
+      - mysql_db
+    env_file:
+      - .env

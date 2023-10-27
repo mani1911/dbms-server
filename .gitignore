@@ -10,3 +10,4 @@ dist
 # Editor directories and files
 config/index.js
 .env
+data
