@@ -8,7 +8,7 @@ import connectSQLDatabase from "./utils/connectSqlDb.js";
 import cookie from "@fastify/cookie";
 import cors from "@fastify/cors";
 import config from "./config/index.js";
-import { healthRouter } from "./routes/index.js";
+import { healthRouter, movieRouter } from "./routes/index.js";
 import seeder from "./seed/seeder.js";
 
 const app = fastify({
@@ -40,6 +40,7 @@ app.register(cors, {
 
 // routes
 healthRouter(app);
+movieRouter(app);	
 
 // seed
 seeder()

@@ -1,6 +1,16 @@
-export default config = {
-	db: "", // database-name
-	port: "", // port number
-	host: "", // host
-	logger: "", // need logging - boolean
+const config = {
+	db: "dbms",
+	port: 8000,
+	host: "localhost",
+	logger: true,
+	firebaseConfig :{
+		apiKey: "",
+		authDomain: "",
+		projectId: "",
+		storageBucket: "",
+		messagingSenderId: "",
+		appId: ""
+	  }
 };
+
+export default config;
