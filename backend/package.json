@@ -1,0 +1,40 @@
+{
+	"name": "fastify-learn",
+	"version": "1.0.0",
+	"main": "server.js",
+	"license": "MIT",
+	"type": "module",
+	"dependencies": {
+		"@fastify/cookie": "^9.1.0",
+		"@fastify/cors": "^8.4.1",
+		"@fastify/mongodb": "^8.0.0",
+		"@fastify/mysql": "^4.1.0",
+		"@fastify/static": "^6.11.2",
+		"bcrypt": "^5.1.1",
+		"dotenv": "^16.3.1",
+		"fastify": "^4.23.2",
+		"fastify-cookie": "^5.7.0",
+		"fastify-plugin": "^4.5.1",
+		"firebase": "^10.5.2",
+		"mongoose": "^7.6.1",
+		"mysql2": "^3.6.1",
+		"sequelize": "^6.33.0"
+	},
+	"scripts": {
+		"start": "node server",
+		"dev": "nodemon server",
+		"prepare": "husky install",
+		"format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
+	},
+	"staged": {
+		"*.{ts,js}": [
+			"yarn format"
+		]
+	},
+	"devDependencies": {
+		"husky": "^8.0.0",
+		"husky-init": "^8.0.0",
+		"nodemon": "^3.0.1",
+		"prettier": "^3.0.3"
+	}
+}

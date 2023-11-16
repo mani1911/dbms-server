@@ -1,0 +1,13 @@
+# Logs
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+
+node_modules
+dist
+
+# Editor directories and files
+config/index.js
+.env
+data
