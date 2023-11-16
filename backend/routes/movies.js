@@ -1,5 +1,5 @@
 import router from "../utils/router.js";
-import { movieController, movieGetByName, bookmarkMovie, getBookmarks, deleteBookmark } from "../controllers/health/movie.controller.js";
+import { movieController, movieGetByName, bookmarkMovie, getBookmarks, deleteBookmark, addComment, getComments } from "../controllers/health/movie.controller.js";
 
 const routes = [
 	{
@@ -26,6 +26,17 @@ const routes = [
 		method: "POST",
 		url: "/deleteBookmark",
 		handler: deleteBookmark.handler
+	}, 
+	{
+		method: "POST",
+		url: '/comment',
+		handler: addComment.handler
+
+	},
+	{
+		method: "GET",
+		url : '/getComment',
+		handler: getComments.handler
 	}
 ];
 

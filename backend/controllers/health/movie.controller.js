@@ -1,4 +1,4 @@
-import { MovieMongo, MovieSQL, Bookmark } from "../../models/index.js"
+import { MovieMongo, MovieSQL, Bookmark, Comment } from "../../models/index.js"
 import db from "../../utils/connectFirebase.js";
 import { collection, getDocs } from "firebase/firestore";
 
@@ -86,6 +86,34 @@ const deleteBookmark = {
     }
 }
 
+const getComments = {
+    handler : async (req, res) => {
+        try {
+            // const movie_id = req.body.movie_id;
+            console.log(req.body)
+            const data = await Comment.findAll()
+            return res.code(200).send({message: data})
+        }
+        catch(err) {
+            return res.code(500).send({message: 'Internal Server Error'})
+        }
+    }
+}
+
+const addComment = {
+    handler : async  (req, res) => {
+        try {
+            const movie_id = req.body.movie_id;
+            const comment = req.body.comment;
+            await Comment.create({comment: comment, movie_id : movie_id})
+            return res.code(200).send({message: 'Comment added Successfully'})
+        }
+        catch(err) {
+            return res.code(500).send({message: 'Internal Server Error'})
+        }
+    }
+}
+
 // deleteOne({ age: { $gte: 10 } })
 
 // Post.findAll({
@@ -97,4 +125,4 @@ const deleteBookmark = {
 // });
 
 
-export {movieController, movieGetByName, bookmarkMovie, getBookmarks, deleteBookmark};
+export {movieController, movieGetByName, bookmarkMovie, getBookmarks, deleteBookmark, addComment, getComments};
